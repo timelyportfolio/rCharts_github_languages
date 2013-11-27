@@ -27,7 +27,9 @@ info.df <- do.call(rbind,lapply(
             lang,
             repo$name,
             repo$stargazers_count,
-            repo$forks
+            repo$forks,
+            repo$created_at,
+            repo$updated_at
           ))
       }
     ))
