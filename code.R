@@ -35,3 +35,7 @@ info.df <- do.call(rbind,lapply(
     ))
   }
 ))
+
+require(lattice)
+#simple stupid graph to get a first look
+xyplot(log(repo.stargazers_count)~repo.name,groups=lang,data=info.df)
