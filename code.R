@@ -17,10 +17,10 @@ results <- lapply(languages,function(lang) {
 
 names(results) <- languages
 
-lapply(
+info.df <- do.call(rbind,lapply(
   languages,
   function(lang){
-    lapply(
+    do.call(rbind,lapply(
       results[[lang]]$content$items,
       function(repo){
           return(data.frame(
@@ -30,6 +30,6 @@ lapply(
             repo$forks
           ))
       }
-    )
+    ))
   }
-)
+))
