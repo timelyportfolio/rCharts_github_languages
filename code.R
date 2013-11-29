@@ -2,7 +2,7 @@
 #install_github("rgithub","cscheid")
 library(github)
 
-languages <- c("python","javascript","r")
+languages <- c("python","javascript","ruby","r")
 
 #get our ctx to use with github api
 ctx <- create.github.context("https://api.github.com/")
