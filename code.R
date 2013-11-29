@@ -39,9 +39,9 @@ info.df <- do.call(rbind,lapply(
 require(lattice)
 #simple stupid graph to get a first look
 xyplot(log(repo.stargazers_count,base=10)~repo.name,groups=lang,data=info.df)
-densityplot(~log(repo.stargazers_count,base=10),groups=lang,data=info.df)
+densityplot(~log(repo.stargazers_count,base=10),groups=lang,data=info.df,plot.points="rug")
 dotplot(lang~log(repo.stargazers_count,base=10),groups=lang,data=info.df)
-sp <- stripplot(
+stripplot(
   log(repo.stargazers_count,base=10)~lang,
   groups=lang,
   labels = info.df$repo.name,
@@ -62,9 +62,22 @@ sp <- stripplot(
   }
 )
 
-require(directlabels)
+info.df$repo.stargazers_count_log <- log(info.df$repo.stargazers_count,base=10)
+require(rCharts)
+d1 <- dPlot(
+  x = c("lang","repo.name"),
+  y = "repo.stargazers_count_log",
+  groups = "lang",
+  data = info.df,
+  type = "bubble"
+)
+d1
 
-direct.label(
-  sp,top.bumpup)
-  dl.combine(top.bumpup,extreme.points,chull.grid,empty.grid)
+
+n1 <- nPlot(
+  x = "repo.name",
+  y = "repo.stargazers_count",
+  group = "lang",
+  data = info.df[order(info.df$repo.stargazers_count),],
+  type = "multiBarChart"  
 )
