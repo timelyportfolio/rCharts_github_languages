@@ -63,6 +63,8 @@ stripplot(
 )
 
 info.df$repo.stargazers_count_log <- log(info.df$repo.stargazers_count,base=10)
+info.df <- ddply(info.df,.(lang),transform, rank=rank(-repo.stargazers_count))
+
 require(rCharts)
 d1 <- dPlot(
   x = c("lang","repo.name"),
@@ -81,3 +83,13 @@ n1 <- nPlot(
   data = info.df[order(info.df$repo.stargazers_count),],
   type = "multiBarChart"  
 )
+n1
+
+n2 <- nPlot(
+  x = "rank",
+  y = "repo.stargazers_count",
+  group = "lang",
+  data = info.df[order(info.df$repo.stargazers_count),],
+  type = "scatterChart"  
+)
+n2
