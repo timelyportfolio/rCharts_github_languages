@@ -1,6 +1,7 @@
 #require(devtools)
 #install_github("rgithub","cscheid")
 library(github)
+library(plyr)
 
 languages <- c("python","java","javascript","ruby","r")
 
@@ -95,5 +96,8 @@ n2 <- nPlot(
   data = info.df[order(info.df$repo.stargazers_count),],
   type = "scatterChart"  
 )
+n2$chart(tooltipContent = "#! function(key,x ,y,e,graph){ 
+  return '<h3>' + e.point.lang + '</h3> <h4>repo: ' + e.point['repo.name'] + '</h4></h3>' 
+} !#")
 n2
 n2$save("nvd3_scatter.html",cdn=T)
