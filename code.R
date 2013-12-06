@@ -85,7 +85,7 @@ n1 <- nPlot(
   data = info.df[order(info.df$repo.stargazers_count),],
   type = "multiBarChart"  
 )
-n1$xAxis(showXAxis = FALSE, stacked=T)
+n1$chart(showXAxis = FALSE, stacked=T)
 n1
 n1$save("nvd3_bar.html",cdn=T)
 
@@ -99,6 +99,6 @@ n2 <- nPlot(
 n2$chart(tooltipContent = "#! function(key,x ,y,e,graph){ 
   return '<h3>' + e.point.lang + '</h3> <h4>repo: ' + e.point['repo.name'] + '</h4></h3>' 
 } !#")
-n2$chart(margin = list(left=100))
+#n2$chart(margin = list(left=100))
 n2
 n2$save("nvd3_scatter.html",cdn=T)
