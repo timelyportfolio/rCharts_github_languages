@@ -72,11 +72,21 @@ d1 <- dPlot(
   y = "repo.stargazers_count_log",
   groups = "lang",
   data = info.df,
-  type = "bubble"
+  type = "bar"
 )
 d1
 d1$save("dimple_scatter.html", cdn=T)
 
+
+d2 <- dPlot(
+  x = c("lang"),
+  y = "repo.stargazers_count_log",
+  groups = c("repo.name","lang"),
+  data = info.df,
+  type = "bar"
+)
+d2
+d2$save("dimple_bar.html", cdn=T)
 
 n1 <- nPlot(
   x = "repo.name",
