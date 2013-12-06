@@ -74,6 +74,7 @@ d1 <- dPlot(
   type = "bubble"
 )
 d1
+d1$save("dimple_scatter.html", cdn=T)
 
 
 n1 <- nPlot(
@@ -83,7 +84,9 @@ n1 <- nPlot(
   data = info.df[order(info.df$repo.stargazers_count),],
   type = "multiBarChart"  
 )
+n1$chart(showXAxis = FALSE, stacked=T)
 n1
+n1$save("nvd3_bar.html",cdn=T)
 
 n2 <- nPlot(
   x = "rank",
@@ -93,3 +96,4 @@ n2 <- nPlot(
   type = "scatterChart"  
 )
 n2
+n2$save("nvd3_scatter.html",cdn=T)
