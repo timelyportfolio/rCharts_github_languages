@@ -80,7 +80,7 @@ d1$save("dimple_scatter.html", cdn=T)
 
 n1 <- nPlot(
   x = "repo.name",
-  y = "repo.stargazers_count",
+  y = "repo.stargazers_count_log",
   group = "lang",
   data = info.df[order(info.df$repo.stargazers_count),],
   type = "multiBarChart"  
@@ -91,7 +91,7 @@ n1$save("nvd3_bar.html",cdn=T)
 
 n2 <- nPlot(
   x = "rank",
-  y = "repo.stargazers_count",
+  y = "repo.stargazers_count_log",
   group = "lang",
   data = info.df[order(info.df$repo.stargazers_count),],
   type = "scatterChart"  
